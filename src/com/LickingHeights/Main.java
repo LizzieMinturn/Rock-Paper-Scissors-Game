@@ -16,8 +16,8 @@ public class Main {
         while (value) {
             System.out.println("Let's play a game of rock, paper, scissors!");
             //score keeping veriable
-            int playerScore = 0;
-            int computerScore = 0;
+            int PlayerScore=0;
+            int ComputerScore=0;
             //loop for core game code
             while (value) {
                 System.out.println("what's your move?");
@@ -41,25 +41,27 @@ public class Main {
                 } else if (Computer == 2) {
                     System.out.println("I choose scissors");
                 }
-                //player wins
-
+                System.out.println("Computer Score: "+ComputerWins(Player, Computer, ComputerScore));
+                System.out.println("Player Score: "+PlayerWins(Player, Computer, PlayerScore));
             }
         }
-
     }   //feedback
-        //player loses
-        public static int ComputerWins(String Player, int Computer, int ComputerScore){
-            if(Player=="rock"&&Computer==1 ||
-                    Player=="paper"&&Computer==2 ||
-                    Player=="scissors"&&Computer==0)
-                ComputerScore=ComputerScore+1;
-            return ComputerScore;
-        }
-        public static int PlayerWins(String Player, int Computer, int PlayerScore){
-            if(Player=="rock"&&Computer==1 ||
-                    Player=="paper"&&Computer==2 ||
-                    Player=="scissors"&&Computer==0)
-                PlayerScore=PlayerScore+1;
-            return PlayerScore;
 
+    //player loses
+    public static int ComputerWins(String Player, int Computer, int ComputerScore) {
+        if (Player == "rock" && Computer == 1 ||
+                Player == "paper" && Computer == 2 ||
+                Player == "scissors" && Computer == 0)
+            ComputerScore = ComputerScore++;
+        return ComputerScore;
+    }
+
+    //player wins
+    public static int PlayerWins(String Player, int Computer, int PlayerScore) {
+        if (Player == "scissors" && Computer == 1 ||
+                Player == "rock" && Computer == 2 ||
+                Player == "paper" && Computer == 0)
+            PlayerScore = PlayerScore + 1;
+        return PlayerScore;
+    }
 }
