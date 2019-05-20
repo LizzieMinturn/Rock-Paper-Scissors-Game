@@ -11,8 +11,10 @@ public class Main {
 
         boolean value = true;
         boolean win=true;
+        int PlayerScore=0;
+        int ComputerScore=0;
         //loop for game to start completely over
-        while (value) {
+        while (win) {
             System.out.println("Let's play a game of rock, paper, scissors!");
             //score keeping veriable
             //loop for core game code
@@ -27,8 +29,6 @@ public class Main {
                 choose[2] = "scissors";
                 int Computer = new Random().nextInt(choose.length);
 
-                //using if/else statement, or switches to build the core game
-                //for computer choice
                 if (Computer == 0) {
                     System.out.println("I choose rock");
                 } else if (Computer == 1) {
@@ -36,40 +36,39 @@ public class Main {
                 } else if (Computer == 2) {
                     System.out.println("I choose scissors");
                 }
-
-                int ComputerScore=ComputerWins(Player, Computer, ComputerScore);
-                int PlayerScore=PlayerWins(Player, Computer, PlayerScore);
+                //feedback
+                ComputerScore=ComputerWins(Player, Computer, ComputerScore);
+                PlayerScore=PlayerWins(Player, Computer, PlayerScore);
                 System.out.println("Computer Score: "+ComputerScore);
                 System.out.println("Player Score: "+PlayerScore);
+
+                if(PlayerScore==2||ComputerScore==2){
+                    break;
+                }
+                else{
+                }
             }
         }
     }
-    //feedback
-    //player loses
+    //using if/else statement, or switches to build the core game
+    //computer wins
     public static int ComputerWins(String Player, int Computer, int ComputerScore) {
-        if (Player == "rock" && Computer == 1 ||
-                Player == "paper" && Computer == 2 ||
-                Player == "scissors" && Computer == 0)
-            ComputerScore = ComputerScore+1;
-        else
-            ComputerScore=ComputerScore+0;
+        if (Player.equals("rock") && Computer == 1 ||
+                Player.equals("paper") && Computer == 2 ||
+                Player.equals("scissors") && Computer == 0){
+            ComputerScore = ComputerScore+1;}
+        else{
+            ComputerScore=ComputerScore;}
         return ComputerScore;
     }
     //player wins
     public static int PlayerWins(String Player, int Computer, int PlayerScore) {
-        if (Player == "scissors" && Computer == 1 ||
-                Player == "rock" && Computer == 2 ||
-                Player == "paper" && Computer == 0)
+        if (Player.equals("scissors") && Computer == 1 ||
+                Player.equals("rock") && Computer == 2 ||
+                Player.equals("paper") && Computer == 0)
             PlayerScore = PlayerScore+1;
         else
-            PlayerScore=PlayerScore+0;
+            PlayerScore=PlayerScore;
         return PlayerScore;
-    }
-    public static boolean StartOver(boolean win, int PlayerScore, int ComputerScore){
-        if(PlayerScore==2||ComputerScore==2){
-            win=true;
-        }
-        else win=false;
-        return win;
     }
 }
